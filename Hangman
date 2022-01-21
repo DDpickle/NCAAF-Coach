@@ -1,0 +1,201 @@
+import random
+import time
+import console
+increaseAtts = False
+# Create a function called game() to run the main game
+def game():
+	console.clear()
+    # Create a variable called HANGMAN that hold a list of all the images using ASCII graphics for the hangman. The amount of images you create will based on how many turns the payer will have.
+    #Use multi line string format
+    
+	
+	validLetters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+	HANGMAN = ["""
+
+
+
+
+
+
+|
+--------""","""
+| 
+|
+|
+|
+|
+|
+|
+|
+--------""",
+"""
+-----
+|   |
+|
+|
+|
+|
+|
+|
+|
+--------
+""", """
+-----
+|   |
+|	O
+|
+|
+|
+|
+|
+|
+--------""", """
+-----
+|   |
+|	O
+|	|
+|
+|
+|
+|
+|
+--------""","""
+-----
+|   |
+|	O
+|	|
+|	/
+|
+|
+|
+|
+--------""", """
+-----
+|   |
+|	O
+|	|	
+|	/\
+|
+|
+|
+|
+--------""","""
+-----
+|   |
+|	O
+|	T
+|	/\
+|
+|
+|
+|
+--------""","""
+-----
+|   |
+|	O
+|	T
+|	/\
+|
+|
+|
+|
+--------"""]
+
+
+    # create another list called words that will hold the string of all the words or phrases you want the other person to guess. You should have at least 10
+	words = ["what", "bears", "chicago", "steak", "xanax", "printer", "the bible", "ball", "water", "soup", "cubs", "tomato", "england","saints","oak tree", "new jersey", "love", "hangman", "coke cola", "purdue", "democrats", "senate house", "concert", "wave", "stardew", "wine", "chesse", "disney", "keyboard", "boston", "wheel of fortune", "septimus severus", "antimatter", "xanax printer", "jazz music", "avenue", "awkward", "sssniperwolf", "vtubers", "mark zucky", "eunioa", "the quick brown fox", "california", "kayak", "voodoo", "vapor", "jiujitsu", "quartz", "zodiac", "jogging", "wheat husker", "nebraska", "neoliberalism", "the far right", "caleb", "from downtown", "mr layne", "forever now", "ranch dressing", "kratski", "jreg", "nirvana", "a penny saved is a penny earned"]
+
+	# make a variabe called gameloop and set it to True
+	gameloop = True
+    # while gameloop to start actual loop of the game
+	while gameloop:
+        # create a new variable called chosen_word that holds random.choice(words)
+		chosen_word = random.choice(words)
+        # create a new variable called attempts that will hold the number of turns
+		attempts = 0
+        # create a new variable called joined_word that holds an empty string
+		joined_word = " "
+        # create 2 new variables called guessed_letters and word_guessed and set them equal to empty
+		guessed_letters = []
+		
+		word_guessed = []
+		wrong_letters = []
+        # this is a for loop. for each letter in the chosen_word variable,it will append a "-" to the word guessed list
+		for letter in chosen_word:
+			if letter == " ":
+					word_guessed.append(" ")
+			else:
+				word_guessed.append("-")
+				
+				
+		console.set_color(0.8,0.5,1)
+		print("Dylans Hangman Project!")
+		console.set_color(0,0,0)
+		print(HANGMAN[attempts])
+        #print your first HANGMAN picture using this code -> HANGMAN[attempts]
+		while attempts != 8 and "-" in word_guessed:
+            # print to the user how many turns or attempts they have left
+					print('===========================')
+					print("")
+					print("Wrong Answers " + str(attempts) + "/8")
+					print("Guessed Letters: " + str(guessed_letters))
+					print("Wrong Letters: " + str(wrong_letters))
+            # allows the chosen word in the word guessed list to print out and look normal
+					joined_word = ''.join(word_guessed)
+					print(joined_word)
+            # create a guess variable that holds an input asking the player to guess a number
+					guess = input("Choose a letter ")
+
+					answer_check = True
+					while answer_check:
+                # need to check to make sure that the guess variable is a letter and is not in guessed letters. If they they are, then the user needs to enter a different answer
+						while guess in guessed_letters:
+							guess = input("Enter a Valid letter")
+							
+						while guess not in validLetters:
+							guess = input("Enter a Valid letter")
+							
+            #append the guess variable to the guessed letters list
+						guessed_letters.append(guess)
+            # a for loop leave alone dont change unless you chose a different name for your guess variable
+						for letter in range(len(chosen_word)):
+								if guess == chosen_word[letter]:
+									word_guessed[letter] = guess
+            # create an if statment that if the guess variable is not in chosen_word then increase attempts by 1 and print next hangman in list
+						
+									
+						if guess not in chosen_word:
+							attempts=attempts+1
+							print(HANGMAN[attempts])
+							wrong_letters.append(guess)
+							time.sleep(0.5)
+							answer_check=False
+						
+						if guess in chosen_word:
+							print(HANGMAN[attempts])
+							time.sleep(0.5)
+							answer_check=False
+							
+        # an if/else statement to check if you won or lost please let the user know what the chosen word or phrase was
+						if "-" not in word_guessed:
+							print("You have guessed the word!")
+							print("")
+							playagain = input("Wanna play Again?")
+							if playagain == "no":
+								exit()	
+							
+						if attempts >= 8:
+							print("You lost! The word was " + (chosen_word))
+							playagain = input("Wanna play Again?")
+							if playagain == "no":
+								exit()	
+        # create a user input that asks the user if they want to play again. if the user does not turn 
+	
+
+
+#run the game dont erase unless you dont want the game function to run.
+game()
+
+
+
+
