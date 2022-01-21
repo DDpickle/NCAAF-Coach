@@ -1,0 +1,506 @@
+import time
+import random
+import console
+playing = True
+gameday = False
+stopLoop = 1
+coachingCred = 0
+number = 0
+question = 0
+pregame=True
+wins=0
+losses = 0
+currentTeam = 'McNeese State'
+playingTeam = 0
+level = 1
+ties = 0
+games_played = 1
+season = 1
+
+console.clear()
+console.set_color(0,0,0)
+print('BETA VERSION 1.4...loading')
+time.sleep(5)
+console.clear()
+
+while stopLoop <= 2:
+	console.set_color(0.5,0.8,1)
+	print("COLLEGE FOOTBALL GM")
+	print("COLLEGE FOOTBALL GM")
+	print("COLLEGE FOOTBALL GM")
+	time.sleep(1)
+	console.clear()
+	console.set_color(0.5,0.9,1)
+	print("COLLEGE FOOTBALL GM")
+	print("COLLEGE FOOTBALL GM")
+	print("COLLEGE FOOTBALL GM")
+	time.sleep(1)
+	console.clear()
+	console.set_color(0.5,1,1)
+	print("COLLEGE FOOTBALL GM")
+	print("COLLEGE FOOTBALL GM")
+	print("COLLEGE FOOTBALL GM")
+	time.sleep(1)
+	console.clear()
+
+	stopLoop = stopLoop + 1
+	
+console.set_color(0,0,0)
+
+print('Would you like to skip the intro?')
+skip = ''
+skip = input()
+if skip == 'no':
+	console.set_color(0.2,0.5,1)
+	time.sleep(1)
+	print("Hey...")
+	time.sleep(2)
+	print("Hey...")
+	time.sleep(2)
+	print("Hey! Wake Up!")
+	time.sleep(2)
+	print("Jeez, did you go out partying after scoring the coaching job? You were out like a log")
+	time.sleep(3)
+	print("...")
+	time.sleep(3)
+	print("What do you mean you forgot? Your coaching at McNeese State! The best school in the Southland Conference")
+	time.sleep(4)
+	print("Yeah, we're not as good as Alabama or Ohio State but we have pride and hope! And maybe if we win a championship we could move to the FBS!")
+	time.sleep(4)
+	print("Well, maybe not THAT but you could score a bigger coaching gig if we did")
+	time.sleep(1.2)
+	console.set_color(0,0,0)
+	print("")
+	print("New Goal: Win a FCS Championship (10 Wins)")
+	time.sleep(2)
+if skip == 'yes':
+	console.set_color(0.8,0.5,1)
+	print('Skipping Intro...')
+	time.sleep(2)
+	console.set_color(0,0,0)
+	
+print('Well, are you ready to jump into the world of college football? (Type YES)')
+what = input()
+time.sleep(2)
+
+while playing == True:
+
+	while pregame == True:
+		xp = 0 + coachingCred
+# team lists (new one for each team)
+
+	# mcneese
+		FCSteam= ['NORTHWESTERN STATE', 'LAMAR', 'S.F.A', 'NICHOLAS', 'NEW ORLEANS', 'SAM HOUSTON', 'NORTH DAKOTA STATE', 'PURDUE', 'CAL POLY', 'OHIO', 'TEXAS BAPTIS', 'VERMONT', 'CENTRAL ARKANSAS', 'EASTERN WASHINGTON', 'FURMAN', 'LA TECH', 'FLORIDA', 'FLORIDA A&M', 'INDIANA STATE', 'INCR. WORD', 'BRADLEY', 'SAN DIEGO', 'RICHMOND', 'MONTANA', 'IDAHO', 'SOUTH CAROLINA ST', 'APP. STATE', 'ALABAMA', 'WISCONSIN-WHITEWATER', 'NORTH TEXAS STATE-EL PASO', 'UTSA', 'CINCY', 'NEW MEXICO', 'EAST TENNESEE STATE', 'CHATTANOOGA', 'BELVIEW-COOKMAN', 'TORONTO UNIVERSITY', 'JACKSONVILLE STATE', 'VANDERBILT']
+		random_index = random.randint(0,len(FCSteam)-1)
+		
+			# san jose	
+		FBSteam1 = ['PURDUE', 'FRENSO STATE', 'NEVADA', 'MCNEESE STATE', 'CINCY', 'VANDERBILT', 'OHIO', 'UCLA', 'ALABAMA', 'IDAHO', 'SAN DIEGO STATE', 'TEXAS A&M', 'ARKANSAS', 'NC STATE', 'VIRGINIA', 'NORTH TEXAS', 'RICE', 'NEW MEXICO', 'APP. STATE', 'WASHINGTON', 'REGINA-CANADA', 'INDIANA', 'NORTH DAKOTA STATE', 'TULANE', 'GEORGIA TECH', 'MARYLAND', 'DELEWARE', 'PRAIRIE VIEW', 'MICHIGAN', 'COLORADO', 'IOWA STATE', 'WRIGHT STATE', 'MONTANA', 'NORTHERN ARIZONA', 'CAL', 'LA TECH', 'FLORIDA', 'FLORIDA STATE', 'NEBRASKA', 'BYU', 'UTAH STATE', 'UTAH', 'SOUTH CAROLINA', 'WEST VIRGINIA', 'SYRACUSE', 'WYOMING', 'SMU']
+		random_index = random.randint(0,len(FCSteam)-1)
+		
+		# georiga tech
+		FBSteam2 = ['GEORGIA', 'VIRGINA TECH', 'FLORIDA', 'WAKE FOREST', 'TEXAS A&M', 'PENN STATE', 'CLEMSON', 'SYRACUSE', 'PITT', 'NC STATE', 'DUKE', 'NORTH CAROLINA', 'FLORIDA STATE', 'CINCY', 'PURDUE', 'ILLINOIS', 'OHIO', 'WISCONSIN', 'NOTRE DAME', 'LOUISVILLE', 'CAL', 'STANFORD', 'VANDERBILT', 'SOUTH DAKOTA', 'UCLA', 'UTAH', 'WASHINGTON', 'OREGON', 'UMASS', 'UCONN', 'SAN JOSE ST', 'SAN DIEGO ST', 'BOISE ST', 'MICHIGAN STATE', 'VIRGINIA', 'HAWAII', 'ARIZONA', 'NEX MEXICO', 'ALABAMA', 'OLE MISS', 'MARYLAND', 'APP. STATE', 'MCNEESE STATE', 'MISSURORI', 'MINNESOTA', 'LSU', 'NEBRASKA', 'IDAHO', 'BALL STATE', 'ARKANSAS', 'DARTMOUTH']
+
+#FCS list
+		if level == 1:
+			playingTeam = FCSteam[random_index]
+		if level == 2:
+			playingTeam = FBSteam1[random_index]
+		print("Season: " + str(season))
+		print("Week: " + str(games_played) + "/20")
+		print('Your Record is ' + str(wins) + '-' + str(losses) + '-' + str(ties))
+		print("")
+		print('Well this week your playing a tough Opp. in ' + playingTeam)
+		time.sleep(2)
+
+# pre game (same for every team)
+		print('Better get started')
+		time.sleep(1.5)
+		print("Every week you'll get a chance to Prep your team ('prep'), talk to the media ('media') and recruit 	('recruit') before the game, what do you want to do?")
+		pregameAct = input()
+
+# prep team
+		if pregameAct == 'prep team' or pregameAct == 'prep':
+			print('')
+			print("You gather your players, would you like to Practice or Pep Talk?")
+			prepAct = input()
+			if prepAct == 'practice':
+				print('')
+				xp = random.randint(0,5)
+				print('Your team practices...')
+				time.sleep(3)
+				print('Your team recived ' + str(xp) + ' XP for practice!')
+			if prepAct == 'pep':
+				print('')
+				print('What do you say to your team?')
+				pepTalk = input()
+				time.sleep(1)
+				print('Interesting...')
+				time.sleep(2)
+				print('Your team loves it!')
+				xp = random.randint(0,5)
+				print('')
+				print('Your team recived ' + str(xp) + ' XP for the talk!')
+
+# Talk to media
+		if pregameAct	== 'media' or pregameAct == 'talk to media':
+			print('')
+			question = random.randint(1,5)
+			if question == 1:
+				print("A reporter asks if you think this is the season that your team will win the conference, how do you respond?")
+			if question == 2:
+				print("A journalist asks if your Offense is going to be able to play well this game, what's your answer?")
+			if question == 3:
+				print("A blogger asks how your players are devolping on the field, what's your response?")
+			if question == 4:
+				print("A Youtuber asks are you happy coaching with your team, how do you answer?")
+			if question == 5:
+				print("A Businessman from town asks you if the team will bring in more customers for the shops in town")
+		
+			answerQuestion = input()
+			time.sleep(2)
+			reporterLikes = random.randint(1,2)
+			print('')
+			if reporterLikes == 1:
+				print('They nod their head and leave')
+				time.sleep(1)
+			if reporterLikes == 2:
+				print('They seem unhappy with your answer')
+				time.sleep(1)
+				xp = xp - 5
+			xp = random.randint(1,5)
+			print('')
+			print('You gain ' + str(xp) + ' XP for your answer')
+			time.sleep(2)
+			print('')
+			print('The rest stand up and leave')
+
+# recruit
+
+		if pregameAct == 'recruit':
+			print('')
+			print("You send out scouts to local schools to find talent...")
+			time.sleep(3)
+			findAplayer = random.randint(1,3)
+			if findAplayer == 1 or findAplayer == 2:
+				print("You found a great player, go talk to them to get them to join!")
+				time.sleep(1.8)
+				print('What will you say?')
+				lurePlayer = random.randint(1,2)
+				respond = input()
+				if lurePlayer == 1:
+					print("")
+					time.sleep(2.5)
+					print("They like it! They've decided to join the team")
+					print("You gained 5 XP for a new recruit")
+					xp = 5
+				if lurePlayer == 2:
+					print("")
+					time.sleep(2.5)
+					print("They aren't so sure...they decline your offer")
+			if findAplayer == 3:
+				print("Your scouts didn't find any players, try again next week")
+	
+	
+
+# game day
+		time.sleep(2)
+		print("Good job, now lets get to the game")
+		pregame = False
+
+	time.sleep(1.5)
+	console.set_color(0.75,0.2,1)
+	print("Simming till Saturday...")
+	time.sleep(5)
+	console.set_color(0,0,0)
+	print('Finally, Gameday')
+	time.sleep(1.8)
+	print('Right before kickoff, you can set your offense and defense to Aggressive, Neutral or Light')
+	time.sleep(2)
+
+	print('What mentallity will your offense have?')
+	offMental = input()
+	while offMental != 'aggressive' and offMental != 'neutral' and offMental != 'light' and offMental != 'a' and offMental != 'n' and offMental != 'l':
+		print('Enter a vaild setting')
+		offMental = input()
+	else:
+		print('Great')
+	
+	print('')
+	print('What mentallity will your defense have?')
+	defMental = input()
+	while defMental != 'aggressive' and defMental != 'neutral' and defMental != 'light' and defMental != 'a' and defMental != 'n' and defMental != 'l':
+		print('Enter a valid setting')
+		defMental = input()
+	else:
+		print('Great')
+	
+	print('''
+
+	''')
+
+	gameday = True
+
+# game
+	print((currentTeam) + ' vs ' + playingTeam)
+	print('------------------------------------------------')
+	yourScore = 0
+	OppScore = 0
+	plays = 0	
+	
+	while gameday == True:
+		
+		time.sleep(3)
+		scoring = random.randint(1,6)
+		while xp > 0:
+			scoring = scoring + xp
+			xp = xp - 2
+			
+# Even Opp. (3-3)
+
+		while playingTeam == 'NORTHWESTERN STATE' or 'LAMAR' or 'S.F.A' or 'NICHOLAS' or 'NEW ORLEANS' or 'SAM HOUSTON' or 'VERMONT' or 'CENTRAL ARKANSAS' or 'FLORIDA A&M' or 'INDIANA STATE' or 'INCR. WORD' or 'RICHMOND' or 'IDAHO' or 'SOUTH CAROLINA ST' or 'EAST TENNESEE STATE' or 'CHATTANOOGA' or 'BELVIEW-COOKMAN' or 'TORONTO UNIVERSITY' or 'JACKSONVILLE STATE' or 'VANDERBILT':
+		
+		
+			scoring = random.randint(1,6)
+		#opp TD
+			if scoring == 1 or scoring == 5:
+				print('')
+				print(playingTeam + ' Touchdown!')
+				OppScore = OppScore + 7
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+
+	#your TD	
+			if scoring == 2 or scoring == 6 or scoring >= 10:
+				print('')
+				print(currentTeam + ' Touchdown!')
+				yourScore = yourScore + 7
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+	
+	#opp FG
+			if scoring == 3 or scoring == 7:
+				print('')
+				print(playingTeam + ' Field Goal!')
+				OppScore = OppScore + 3
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+	
+	#your FG	
+			if scoring == 4 or scoring >= 8:
+				print('')
+				print(currentTeam + ' Field Goal!')
+				yourScore = yourScore + 3
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+		
+			time.sleep(3.5)
+			
+			endgame = random.randint(6,20)
+			if plays >= endgame:
+				print('')
+				print('END OF GAME')
+				print('')
+				break
+#	Easy opp. (4-2)
+
+		while playingTeam == 'CAL POLY' or 'TEXAS BAPTIS' or 'CENTRAL ARKANSAS' or 'FURMAN' or 'BRADLEY' or 'SAN DIEGO' or 'NORTH TEXAS STATE-EL PASO' or 'WISCONSIN-WHITEWATER':
+	
+			scoring = random.randint(1,6)
+		#opp TD
+			if scoring == 1:
+				print('')
+				print(playingTeam + ' Touchdown!')
+				OppScore = OppScore + 7
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+		
+	#your TD	
+			if scoring == 2 or scoring == 6 or scoring >= 10:
+				print('')
+				print(currentTeam + ' Touchdown!')
+				yourScore = yourScore + 7
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+		
+	#opp FG
+			if scoring == 3 or scoring == 7:
+				print('')
+				print(playingTeam + ' Field Goal!')
+				OppScore = OppScore + 3
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+
+	#your FG	
+			if scoring == 4 or scoring >= 8 or scoring == 5:
+				print('')
+				print(currentTeam + ' Field Goal!')
+				yourScore = yourScore + 3
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+			
+			time.sleep(3.5)
+			
+			endgame = random.randint(6,20)
+			if plays >= endgame:
+				print('')
+				print('END OF GAME')
+				print('')
+				break
+# Hard opp. (2-4)	
+
+		while playingTeam == 'NORTH DAKOTA STATE' or 'PURDUE' or 'OHIO' or 'LA TECH' or 'APP. STATE' or 'UTSA' or 'NEW MEXICO' or 'MONTANA' or 'EASTERN WASHINGTON':
+
+
+			scoring = random.randint(1,6)
+		#opp TD
+			if scoring == 1 or scoring == 5:
+				print('')
+				print(playingTeam + ' Touchdown!')
+				OppScore = OppScore + 7
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+	
+		#your TD	
+			if scoring == 2 or scoring >= 10:
+				print('')
+				print(currentTeam + ' Touchdown!')
+				yourScore = yourScore + 7
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+	
+		#opp FG
+			if scoring == 3 or scoring == 7 or scoring == 6:
+				print('')
+				print(playingTeam + ' Field Goal!')
+				OppScore = OppScore + 3
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+	
+		#your FG	
+			if scoring == 4 or scoring >= 8:
+				print('')
+				print(currentTeam + ' Field Goal!')
+				yourScore = yourScore + 3
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+				
+				
+			time.sleep(3.5)
+			
+			endgame = random.randint(6,20)
+			if plays >= endgame:
+				print('')
+				print('END OF GAME')
+				print('')
+				break
+#super hard opp. (1-5)
+
+		while playingTeam == 'FLORIDA' or 'ALABAMA' or 'CINCY':
+
+
+			scoring = random.randint(1,6)
+		#opp TD
+			if scoring == 1 or scoring == 5 or scoring == 6:
+				print('')
+				print(playingTeam + ' Touchdown!')
+				OppScore = OppScore + 7
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+	
+		#your TD	
+			if scoring == 2 or scoring >= 10:
+				print('')
+				print(currentTeam + ' Touchdown!')
+				yourScore = yourScore + 7
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+	
+		#opp FG
+			if scoring == 3 or scoring == 7:
+				print('')
+				print(playingTeam + ' Field Goal!')
+				OppScore = OppScore + 3
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+
+		#your FG	
+			if scoring == 4 or scoring >= 8:
+				print('')
+				print(currentTeam + ' Field Goal!')
+				yourScore = yourScore + 3
+				print(currentTeam + ', ' + str(yourScore))
+				print(playingTeam + ', ' + str(OppScore))
+				plays = plays + 1
+
+			time.sleep(3.5)
+	
+			endgame = random.randint(6,20)
+			if plays >= endgame:
+				print('')
+				print('END OF GAME')
+				print('')
+				break
+				
+		if yourScore > OppScore:
+					time.sleep(1)
+					print("You Win!")
+					wins = wins + 1
+		
+		if OppScore > yourScore:
+					time.sleep(1)
+					print("You Lose")
+					losses = losses + 1
+				
+		if OppScore == yourScore:
+					time.sleep(1)
+					print('You Tied')
+					ties = ties + 1	
+		
+			
+		print('Your Record is ' + str(wins) + '-' + str(losses) + '-' + str(ties))
+		print('')
+		print("------------------------------------------------")
+		games_played = games_played + 1
+		time.sleep(3)
+		gameday = False
+		pregame = True
+	
+	if wins == 10:
+		print('Congrats, you won the FCS, you accepted a job offer at SAN JOSE STATE, welcome to the FBS')
+		time.sleep(3)
+		print('NEW GOAL: Win the Mountain West (12 wins), to move to Power 5')
+		currentTeam = 'San Jose St'
+		level = 2
+		time.sleep(2)
+		print('You recived a coaching token, this will favor your odds of winning games slightly')
+		time.sleep(2)
+		coachingCred = 1
+		wins = 0
+		losses = 0
+		ties = 0
+		season = season + 1
+		games_played = 1
+		
+	if games_played == 20:
+		print("Your Season has ended")
+		time.sleep(2)
+		season = season + 1
+		games_played = 0
+		wins = 0
+		losses = 0
+		ties = 0
